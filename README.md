@@ -1,11 +1,11 @@
 # Project
-Android万能Drawable，多种状态模式、形状、填充模式、描边模式等等，旨在替代手写独立的drawable.xml。<br/>
-Android universal drawable, supports multiple state mode/shape/fill mode/stroke mode, etc. Aiming to replace separate drawable.xml written manually.
+Android万能Drawable，多种状态模式、形状、填充模式、描边模式、自定义剪切等等，旨在替代手写独立的drawable.xml。<br/>
+Android universal drawable, supports multiple state mode/shape/fill mode/stroke mode/custom clipping, etc. Aiming to replace separate drawable.xml written manually.
 
 # Preview
 黑色字体是默认值。<br/>
 The black font means the value is default.
-![image](https://github.com/yintaibing/UniversalDrawable/blob/master/screenshot/preview.png)
+![image](https://github.com/yintaibing/UniversalDrawable/blob/master/screenshot/preview.jpg)
 
 # Import
 - Gradle
@@ -29,9 +29,12 @@ XML and Java are both supported(you can see all configurable attributes in attrs
 The library, UniversalDrawableXXX, provides kinds of widgets: View/TextView/Button/CheckBox/ImageView/ViewGroup/FrameLayout/RelativeLayout/LinearLayout, and you can extends your own widget class by copying the code of UniversalDrawableXXX and you just need write only one line of code.
 <br/>
 <br/>
-tip1: If you're using clickable/checkable UniversalDrawableSet, plz set android:clickable=true/android:checkable=true.<br/>
-tip2: The "fillMode" supports flags combination: color|linearGradient, color|bitmap. In this case, the color will work as a ColorFilter, so giving an alpha value to the color is recommended.<br/>
-tip3: UniversalDrawableImageView with "wrap_content" or "adjustBounds=true" may not work good...plz avoid to use it so.<br/>
+tip1: 使用多状态模式时，请注意同时加上android:clickable=true/android:checkable=true。<br/>
+If you're using clickable/checkable UniversalDrawableSet, plz set android:clickable=true/android:checkable=true.<br/>
+tip2:
+The "fillMode" supports flags combination: color|linearGradient, color|bitmap. In this case, the color will work as a ColorFilter, so giving an alpha value to the color is recommended.<br/>
+tip3:
+UniversalDrawableImageView with "wrap_content" or "adjustBounds=true" may not work good...plz avoid to use it so.<br/>
 ```xml
 <me.yintaibing.universaldrawable.view.UniversalDrawableView
     android:id="@+id/universal_view"
@@ -50,13 +53,30 @@ tip3: UniversalDrawableImageView with "wrap_content" or "adjustBounds=true" may 
     app:bg_strokeWidth="2dp" />
 ```
 ```java
-UniversalDrawableSet set = UniversalDrawableFactory.createClickable();
-set.shape(UniversalDrawable.SHAPE_CIRCLE)
-        .strokeWidth(4);// common attrs
+// stateless
+UniversalDrawableFactory.createStateless();
+// stateful
+UniversalDrawableSet set = UniversalDrawableFactory.createClickable();//createCheckable()
+set.shape(UniversalDrawable.SHAPE_CIRCLE);// common attrs
 set.theNormal().colorFill(Color.BLACK);// different attrs
 set.thePressed().colorFill(Color.GRAY);
 //set.theChecked()...
 //set.theUnchecked()...
+
+// clip, you can call Clipper.invalidate() and Drawable.invalidateSelf() to redraw
+UniversalDrawableFactory.createStateless()
+	.clip(new Clipper() {
+	    // false: stroke not follow clipping, true: follow
+	    @Override
+	    public boolean buildClipPath(Path clipPath, RectF bounds, Attributes attrs) {
+	        UniversalDrawable.makeDrawPath(clipPath, bounds, attrs);
+	        float radius = bounds.height() * 0.5f;
+	        clipPath.addCircle(bounds.left, bounds.top, radius, Path.Direction.CW);
+	        clipPath.setFillType(Path.FillType.EVEN_ODD);
+	        return false;
+	    }
+	})
+	.asBackground(view);
 ```
 
 # attrs.xml

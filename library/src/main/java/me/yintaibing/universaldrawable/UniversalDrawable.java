@@ -57,9 +57,9 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
 
     private Attributes mAttrs;
     private RectF mBoundsF;
-//    private RectF mStrokeBoundsF;
+    private RectF mDrawBoundsF;
     private Path mDrawPath;
-//    private Path mStrokePath;
+    private Path mClippedDrawPath;
     private Paint mFillPaint;
     private Paint mStrokePaint;
     private Clipper mClipper;
@@ -74,6 +74,7 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
     UniversalDrawable() {
         mAttrs = new Attributes();
         mBoundsF = new RectF();
+        mDrawBoundsF = new RectF();
         mDrawPath = new Path();
         mFillPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mFillPaint.setStyle(Paint.Style.FILL);
@@ -87,48 +88,26 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
         boolean hasStroke = mAttrs.hasStroke();
         checkBoundsAndPath(hasStroke ? mAttrs.strokeWidth * 0.5f : 0f);
 
-        // 获取剪切信息
-        Clipper clipper = mClipper;
-        boolean hasClip = false;
-        boolean strokeFollowClip = false;
-        Path clipPath = null;
-        if (clipper != null) {
-            if (clipper.isDirty()) {
-                clipper.updateClipPath(mBoundsF, mAttrs);
-            }
-            hasClip = clipper.hasClip();
-            strokeFollowClip = clipper.isStrokeFollowClip();
-            clipPath = clipper.getClipPath();
-        }
-        if (hasClip) {
-            clipper.saveCanvasLayer(canvas);
-        }
-
-        // 绘制填充
-        drawFill(canvas);
-
-        if (hasStroke) {
-            // 绘制描边。如果描边跟随剪切路径，则按剪切路径描边；否则按实际边界描边
-            drawStroke(canvas, strokeFollowClip ? clipPath : mDrawPath);
-        }
-
-        if (hasClip) {
-            clipper.clipAndRestoreCanvas(canvas);
+        if (mClipper != null) {
+            drawWithClipper(canvas, hasStroke, mClipper);
+        } else {
+            drawWithoutClipper(canvas, hasStroke);
         }
     }
 
     private void checkBoundsAndPath(float strokeInset) {
         if (mIsBoundsDirty) {
             mBoundsF.set(getBounds());
+            mDrawBoundsF.set(mBoundsF);
             if (strokeInset > 0f) {
-                mBoundsF.inset(strokeInset, strokeInset);
+                mDrawBoundsF.inset(strokeInset, strokeInset);
             }
             mIsBoundsDirty = false;
         }
 
         if (mIsPathDirty) {
             mDrawPath.reset();
-            makeDrawPath(mDrawPath, mBoundsF, mAttrs);
+            makeDrawPath(mDrawPath, mDrawBoundsF, mAttrs);
             mIsPathDirty = false;
         }
     }
@@ -160,6 +139,39 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
                 radius = Math.min(width, height) * 0.5f;
                 path.addCircle(width * 0.5f, height * 0.5f, radius, Path.Direction.CW);
                 break;
+        }
+    }
+
+    private void drawWithClipper(Canvas canvas, boolean hasStroke, Clipper clipper) {
+        boolean isDirty = clipper.isDirty();
+        if (isDirty) {
+            clipper.updateClipPath(mBoundsF, mAttrs);
+        }
+        if (clipper.hasClip()) {
+            clipper.saveCanvasLayer(canvas);
+            // 绘制填充和描边。如果描边跟随剪切路径，则按剪切路径描边；否则按实际边界描边
+            drawFill(canvas);
+            if (hasStroke) {
+                if (clipper.isStrokeFollowClip()) {
+                    if (mClippedDrawPath == null) {
+                        mClippedDrawPath = new Path();
+                    } else if (isDirty) {
+                        mClippedDrawPath.reset();
+                    }
+                    clipper.buildClipPath(mClippedDrawPath, mDrawBoundsF, mAttrs);
+                    drawStroke(canvas, mClippedDrawPath);
+                } else {
+                    drawStroke(canvas, mDrawPath);
+                }
+            }
+            clipper.clipAndRestoreCanvas(canvas);
+        }
+    }
+
+    private void drawWithoutClipper(Canvas canvas, boolean hasStroke) {
+        drawFill(canvas);
+        if (hasStroke) {
+            drawStroke(canvas, mDrawPath);
         }
     }
 
@@ -647,6 +659,10 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
     @Override
     public void asImageDrawable(ImageView imageView) {
         Utils.asImageDrawable(this, imageView);
+    }
+
+    public Clipper getClipper() {
+        return mClipper;
     }
 
     /*----------Tool Code-----------*/

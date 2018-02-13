@@ -260,4 +260,24 @@
             app:bg_strokeWidth="1dp" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clip" />
+
+    <TextView
+        android:id="@+id/clipped_view_not_follow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="2dp"
+        android:gravity="center"
+        android:text="clip(stroke not follow clipping)" />
+
+    <TextView
+        android:id="@+id/clipped_view_follow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="2dp"
+        android:gravity="center"
+        android:text="clip(stroke follow clipping)" />
 </LinearLayout>
