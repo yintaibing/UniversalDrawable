@@ -3,6 +3,7 @@ Android万能Drawable，多种状态模式、形状、填充模式、描边模�
 Android universal drawable, supports multiple state mode/shape/fill mode/stroke mode, etc. Aiming to replace separate drawable.xml written manually.
 
 # Preview
+![image](https://github.com/yintaibing/UniversalDrawable/blob/master/screenshot/preview.png)
 
 # Import
 
@@ -14,8 +15,8 @@ The library, UniversalDrawableXXX, provides kinds of widgets: View/TextView/Butt
 <br/>
 <br/>
 tip1: If you're using clickable/checkable UniversalDrawableSet, plz set android:clickable=true/android:checkable=true.<br/>
-tip2: The "fillMode" supports flags combination: color|linearGradient, color|bitmap. In this case, the color will work as a ColorFilter, so giving an alpha value to the color is recommended.
-tip3: UniversalDrawableImageView with "wrap_content" or "adjustBounds=true" may not work good...plz avoid to use it so.
+tip2: The "fillMode" supports flags combination: color|linearGradient, color|bitmap. In this case, the color will work as a ColorFilter, so giving an alpha value to the color is recommended.<br/>
+tip3: UniversalDrawableImageView with "wrap_content" or "adjustBounds=true" may not work good...plz avoid to use it so.<br/>
 ```xml
 <me.yintaibing.universaldrawable.view.UniversalDrawableView
     android:id="@+id/universal_view"
