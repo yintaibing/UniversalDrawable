@@ -1,5 +1,5 @@
 # Project
-Android万能Drawable，多种状态模式、形状、填充模式、描边模式等等，旨在替代手写独立的drawable.xml。
+Android万能Drawable，多种状态模式、形状、填充模式、描边模式等等，旨在替代手写独立的drawable.xml。<br/>
 Android universal drawable, supports multiple state mode/shape/fill mode/stroke mode, etc. Aiming to replace separate drawable.xml written manually.
 
 # Preview
@@ -7,9 +7,9 @@ Android universal drawable, supports multiple state mode/shape/fill mode/stroke 
 # Import
 
 # Usage
-提供xml方式和Java方式（下方attrs.xml中显示了所有可配置参数）。
-控件库提供多种控件类，你也可以仿照UniversalDrawableXXX的代码扩展你自己的控件。一行代码搞定。
-XML and Java are both supported(you can see all configurable attributes in attrs.xml below).
+提供xml方式和Java方式（下方attrs.xml中显示了所有可配置参数）。<br/>
+控件库提供多种控件类，你也可以仿照UniversalDrawableXXX的代码扩展你自己的控件。一行代码搞定。<br/>
+XML and Java are both supported(you can see all configurable attributes in attrs.xml below).<br/>
 the library, UniversalDrawableXXX, provides kinds of widgets: View/TextView/Button/CheckBox/ImageView/ViewGroup/FrameLayout/RelativeLayout/LinearLayout, and you can extends your own widget class by copying the code of UniversalDrawableXXX and you just need write only one line of code.
 ```xml
 <me.yintaibing.universaldrawable.view.UniversalDrawableView

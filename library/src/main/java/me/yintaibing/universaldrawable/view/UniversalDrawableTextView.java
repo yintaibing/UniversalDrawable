@@ -1,8 +1,8 @@
 package me.yintaibing.universaldrawable.view;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import android.view.View;
 
 import me.yintaibing.universaldrawable.UniversalDrawableFactory;
 
@@ -12,17 +12,17 @@ import me.yintaibing.universaldrawable.UniversalDrawableFactory;
  * Created by yintaibing on 2018/2/9.
  */
 
-public class UniversalDrawableView extends View {
+public class UniversalDrawableTextView extends AppCompatTextView {
 
-    public UniversalDrawableView(Context context) {
+    public UniversalDrawableTextView(Context context) {
         this(context, null, 0);
     }
 
-    public UniversalDrawableView(Context context, AttributeSet attrSet) {
+    public UniversalDrawableTextView(Context context, AttributeSet attrSet) {
         this(context, attrSet, 0);
     }
 
-    public UniversalDrawableView(Context context, AttributeSet attrSet, int style) {
+    public UniversalDrawableTextView(Context context, AttributeSet attrSet, int style) {
         super(context, attrSet, style);
         UniversalDrawableFactory.fromXml(this, context, attrSet);
     }

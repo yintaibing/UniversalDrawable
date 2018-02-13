@@ -2,7 +2,7 @@ package me.yintaibing.universaldrawable.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.RelativeLayout;
 
 import me.yintaibing.universaldrawable.UniversalDrawableFactory;
 
@@ -12,17 +12,17 @@ import me.yintaibing.universaldrawable.UniversalDrawableFactory;
  * Created by yintaibing on 2018/2/9.
  */
 
-public class UniversalDrawableView extends View {
+public class UniversalDrawableRelativeLayout extends RelativeLayout {
 
-    public UniversalDrawableView(Context context) {
+    public UniversalDrawableRelativeLayout(Context context) {
         this(context, null, 0);
     }
 
-    public UniversalDrawableView(Context context, AttributeSet attrSet) {
+    public UniversalDrawableRelativeLayout(Context context, AttributeSet attrSet) {
         this(context, attrSet, 0);
     }
 
-    public UniversalDrawableView(Context context, AttributeSet attrSet, int style) {
+    public UniversalDrawableRelativeLayout(Context context, AttributeSet attrSet, int style) {
         super(context, attrSet, style);
         UniversalDrawableFactory.fromXml(this, context, attrSet);
     }
