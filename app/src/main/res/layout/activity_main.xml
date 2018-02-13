@@ -6,18 +6,258 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-    <me.yintaibing.universaldrawable.view.UniversalDrawableView
-        android:id="@+id/universal_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:bg_bitmap="@android:drawable/ic_delete"
-        app:bg_colorNormal="#880000ff"
-        app:bg_colorPressed="#880066ff"
-        app:bg_colorStroke="#ff0000"
-        app:bg_fillMode="color|bitmap"
-        app:bg_radius="10dp"
-        app:bg_scaleType="fitXY"
-        app:bg_shape="round"
-        app:bg_stateMode="clickable"
-        app:bg_strokeWidth="2dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bg_stateMode" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="stateless"
+            app:bg_colorNormal="@android:color/darker_gray" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="clickable"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_colorPressed="@android:color/holo_green_dark"
+            app:bg_stateMode="clickable" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:button="@null"
+            android:checked="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="checkable"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorChecked="@android:color/holo_green_dark"
+            app:bg_colorUnchecked="@android:color/darker_gray"
+            app:bg_stateMode="checkable" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bg_shape" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="rect"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_shape="rect" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="round"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_radius="10dp"
+            app:bg_shape="round" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="semicircle"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_shape="semicircle" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="circle"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_shape="circle" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bg_fillMode" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="color"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_fillMode="color"
+            app:bg_shape="rect" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="linearGradient"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorGradientEnd="@android:color/white"
+            app:bg_colorGradientStart="@android:color/darker_gray"
+            app:bg_fillMode="linearGradient"
+            app:bg_shape="rect" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="bitmap"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_bitmap="@mipmap/example"
+            app:bg_fillMode="bitmap"
+            app:bg_shape="rect" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bg_scaleType" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:text="center"
+            app:bg_bitmap="@mipmap/example"
+            app:bg_fillMode="bitmap"
+            app:bg_scaleType="center"
+            app:bg_shape="rect" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:text="centerCrop"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_bitmap="@mipmap/example"
+            app:bg_fillMode="bitmap"
+            app:bg_scaleType="centerCrop"
+            app:bg_shape="rect" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:text="fitCenter"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_bitmap="@mipmap/example"
+            app:bg_fillMode="bitmap"
+            app:bg_scaleType="fitCenter"
+            app:bg_shape="rect" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:text="fitXY"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_bitmap="@mipmap/example"
+            app:bg_fillMode="bitmap"
+            app:bg_scaleType="fitXY"
+            app:bg_shape="rect" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bg_strokeMode" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="solid"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_colorStroke="@android:color/holo_red_dark"
+            app:bg_shape="semicircle"
+            app:bg_strokeWidth="1dp" />
+
+        <me.yintaibing.universaldrawable.view.UniversalDrawableTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="dash"
+            android:textColor="@android:color/holo_red_dark"
+            app:bg_colorNormal="@android:color/darker_gray"
+            app:bg_colorStroke="@android:color/holo_red_dark"
+            app:bg_shape="semicircle"
+            app:bg_strokeDashSolid="4dp"
+            app:bg_strokeDashSpace="2dp"
+            app:bg_strokeWidth="1dp" />
+    </LinearLayout>
+
 </LinearLayout>

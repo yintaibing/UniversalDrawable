@@ -239,9 +239,9 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
                             (bitmapW > drawableW && bitmapH > drawableH)) {
                         scaleX = scaleY = Math.min(widthRatio, heightRatio);
                     } else if (bitmapW < drawableW) {
-                        scaleY = scaleX = widthRatio;
-                    } else if (bitmapH < drawableH) {
                         scaleX = scaleY = heightRatio;
+                    } else if (bitmapH < drawableH) {
+                        scaleY = scaleX = widthRatio;
                     }
                     break;
                 case SCALE_TYPE_FIT_XY:

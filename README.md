@@ -10,12 +10,18 @@ Android universal drawable, supports multiple state mode/shape/fill mode/stroke 
 提供xml方式和Java方式（下方attrs.xml中显示了所有可配置参数）。<br/>
 控件库提供多种控件类，你也可以仿照UniversalDrawableXXX的代码扩展你自己的控件。一行代码搞定。<br/>
 XML and Java are both supported(you can see all configurable attributes in attrs.xml below).<br/>
-the library, UniversalDrawableXXX, provides kinds of widgets: View/TextView/Button/CheckBox/ImageView/ViewGroup/FrameLayout/RelativeLayout/LinearLayout, and you can extends your own widget class by copying the code of UniversalDrawableXXX and you just need write only one line of code.
+The library, UniversalDrawableXXX, provides kinds of widgets: View/TextView/Button/CheckBox/ImageView/ViewGroup/FrameLayout/RelativeLayout/LinearLayout, and you can extends your own widget class by copying the code of UniversalDrawableXXX and you just need write only one line of code.
+<br/>
+<br/>
+tip1: If you're using clickable/checkable UniversalDrawableSet, plz set android:clickable=true/android:checkable=true.<br/>
+tip2: The "fillMode" supports flags combination: color|linearGradient, color|bitmap. In this case, the color will work as a ColorFilter, so giving an alpha value to the color is recommended.
+tip3: UniversalDrawableImageView with "wrap_content" or "adjustBounds=true" may not work good...plz avoid to use it so.
 ```xml
 <me.yintaibing.universaldrawable.view.UniversalDrawableView
     android:id="@+id/universal_view"
     android:layout_width="200dp"
     android:layout_height="200dp"
+    android:clickable="true"
     app:bg_bitmap="@android:drawable/ic_delete"
     app:bg_colorNormal="#880000ff"
     app:bg_colorPressed="#880066ff"
