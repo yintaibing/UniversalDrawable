@@ -17,7 +17,7 @@ compile 'me.yintaibing:universaldrawable:1.0.1'
 <dependency>
   <groupId>me.yintaibing</groupId>
   <artifactId>universaldrawable</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
