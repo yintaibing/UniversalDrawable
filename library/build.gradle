@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 26
@@ -16,9 +17,28 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding = "UTF-8"
+}
+
+publish {
+    repoName = 'maven'// bintray仓库名
+    userOrg = 'yintaibing'//bintray.com用户名
+    groupId = 'me.yintaibing'//jcenter上的路径
+    artifactId = 'universaldrawable'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'android universal drawable'//描述，不重要
+    website = 'https://github.com/yintaibing/UniversalDrawable'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
 }

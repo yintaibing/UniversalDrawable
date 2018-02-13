@@ -3,9 +3,24 @@ Android万能Drawable，多种状态模式、形状、填充模式、描边模�
 Android universal drawable, supports multiple state mode/shape/fill mode/stroke mode, etc. Aiming to replace separate drawable.xml written manually.
 
 # Preview
+黑色字体是默认值。<br/>
+The black font means the value is default.
 ![image](https://github.com/yintaibing/UniversalDrawable/blob/master/screenshot/preview.png)
 
 # Import
+- Gradle
+```groovy
+compile 'me.yintaibing:universaldrawable:1.0.0'
+```
+- Maven
+```xml
+<dependency>
+  <groupId>me.yintaibing</groupId>
+  <artifactId>universaldrawable</artifactId>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 # Usage
 提供xml方式和Java方式（下方attrs.xml中显示了所有可配置参数）。<br/>

@@ -62,6 +62,7 @@ public abstract class Clipper {
      *
      * @param path   剪切路径
      * @param bounds 剪切区域
+     * @param attrs  属性
      * @return 是否跟随剪切路径进行描边
      */
     public abstract boolean buildClipPath(Path path, RectF bounds, Attributes attrs);
