@@ -10,7 +10,7 @@ The black font means the value is default.
 # Import
 - Gradle
 ```groovy
-compile 'me.yintaibing:universaldrawable:1.0.1'
+compile 'me.yintaibing:universaldrawable:1.0.2'
 ```
 - Maven
 ```xml
