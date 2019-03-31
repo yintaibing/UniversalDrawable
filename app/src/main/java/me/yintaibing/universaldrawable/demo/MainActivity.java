@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main_2);
 
         View clippedViewNotFollow = findViewById(R.id.clipped_view_not_follow);
         UniversalDrawableFactory.createStateless()

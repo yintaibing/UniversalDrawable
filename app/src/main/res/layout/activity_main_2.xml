@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <me.yintaibing.universaldrawable.view.UniversalDrawableImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:padding="4dp"
+        android:src="@mipmap/default_circle_avatar"
+        app:bg_colorStroke="@android:color/holo_red_dark"
+        app:bg_shape="circle"
+        app:bg_strokeMode="solid"
+        app:bg_strokeWidth="4dp" />
+</LinearLayout>

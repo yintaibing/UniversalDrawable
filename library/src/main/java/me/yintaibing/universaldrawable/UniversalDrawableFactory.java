@@ -19,6 +19,8 @@ import me.yintaibing.universaldrawable.util.Utils;
  */
 
 public class UniversalDrawableFactory {
+    private static final int DEFAULT_COLOR = Color.TRANSPARENT;
+
     public static void fromXml(View view, Context context, AttributeSet attrSet) {
         if (attrSet == null) {
             return;
@@ -69,7 +71,7 @@ public class UniversalDrawableFactory {
         // stroke
         int strokeWidth = ta.getDimensionPixelSize(R.styleable.UniversalDrawable_bg_strokeWidth, 0);
         int colorStroke = ta.getColor(R.styleable.UniversalDrawable_bg_colorStroke,
-                Color.TRANSPARENT);
+                DEFAULT_COLOR);
         float alphaStroke = ta.getFloat(R.styleable.UniversalDrawable_bg_alphaStroke, 1f);
         if (Utils.hasStroke(strokeWidth, colorStroke, alphaStroke)) {
             drawable.strokeWidth(strokeWidth)
@@ -85,38 +87,38 @@ public class UniversalDrawableFactory {
         // fill color
         if (stateMode == UniversalDrawableSet.STATE_MODE_CLICKABLE) {
             int colorDisabled = ta.getColor(R.styleable.UniversalDrawable_bg_colorDisabled,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             int colorNormal = ta.getColor(R.styleable.UniversalDrawable_bg_colorNormal,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             int colorPressed = ta.getColor(R.styleable.UniversalDrawable_bg_colorPressed,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             UniversalDrawableSet set = (UniversalDrawableSet) drawable;
             set.theDisabled().colorFill(colorDisabled);
             set.theNormal().colorFill(colorNormal);
             set.thePressed().colorFill(colorPressed);
         } else if (stateMode == UniversalDrawableSet.STATE_MODE_CHECKABLE) {
             int colorDisabled = ta.getColor(R.styleable.UniversalDrawable_bg_colorDisabled,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             int colorUnchecked = ta.getColor(R.styleable.UniversalDrawable_bg_colorUnchecked,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             int colorChecked = ta.getColor(R.styleable.UniversalDrawable_bg_colorChecked,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             UniversalDrawableSet set = (UniversalDrawableSet) drawable;
             set.theDisabled().colorFill(colorDisabled);
             set.theUnchecked().colorFill(colorUnchecked);
             set.theChecked().colorFill(colorChecked);
         } else {
             int colorNormal = ta.getColor(R.styleable.UniversalDrawable_bg_colorNormal,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             drawable.colorFill(colorNormal);
         }
 
         // gradient
         if ((fillMode & UniversalDrawable.FILL_MODE_LINEAR_GRADIENT) != 0) {
             int colorGradientStart = ta.getColor(R.styleable.UniversalDrawable_bg_colorGradientStart,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             int colorGradientEnd = ta.getColor(R.styleable.UniversalDrawable_bg_colorGradientEnd,
-                    Color.TRANSPARENT);
+                    DEFAULT_COLOR);
             int linearGradientOrientation = ta.getInt(
                     R.styleable.UniversalDrawable_bg_linearGradientOrientation,
                     UniversalDrawable.LINEAR_GRADIENT_LR);

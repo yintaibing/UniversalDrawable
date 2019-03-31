@@ -137,7 +137,9 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
                 float width = bounds.width();
                 float height = bounds.height();
                 radius = Math.min(width, height) * 0.5f;
-                path.addCircle(width * 0.5f, height * 0.5f, radius, Path.Direction.CW);
+                float centerX = width * 0.5f + bounds.left;
+                float centerY = height * 0.5f + bounds.top;
+                path.addCircle(centerX, centerY, radius, Path.Direction.CW);
                 break;
         }
     }
