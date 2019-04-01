@@ -27,8 +27,8 @@ public class Utils {
         return false;
     }
 
-    public static boolean hasStroke(int strokeWidth, int strokeColor, float alphaStroke) {
-        return strokeWidth > 0 && strokeColor != Color.TRANSPARENT && alphaStroke > 0f;
+    public static boolean hasStroke(int strokeWidth, int strokeColor) {
+        return strokeWidth > 0 && strokeColor != Color.TRANSPARENT;
     }
 
     public static void asBackground(Drawable drawable, View view) {

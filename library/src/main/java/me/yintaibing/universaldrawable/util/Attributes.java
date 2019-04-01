@@ -43,7 +43,7 @@ public class Attributes {
     }
 
     public boolean hasStroke() {
-        return Utils.hasStroke(strokeWidth, colorStroke, alphaStroke);
+        return Utils.hasStroke(strokeWidth, colorStroke);
     }
 
     public boolean hasDashStroke() {

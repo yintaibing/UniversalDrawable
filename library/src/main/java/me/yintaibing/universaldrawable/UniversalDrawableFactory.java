@@ -73,7 +73,7 @@ public class UniversalDrawableFactory {
         int colorStroke = ta.getColor(R.styleable.UniversalDrawable_bg_colorStroke,
                 DEFAULT_COLOR);
         float alphaStroke = ta.getFloat(R.styleable.UniversalDrawable_bg_alphaStroke, 1f);
-        if (Utils.hasStroke(strokeWidth, colorStroke, alphaStroke)) {
+        if (Utils.hasStroke(strokeWidth, colorStroke)) {
             drawable.strokeWidth(strokeWidth)
                     .colorStroke(colorStroke)
                     .alphaStroke(alphaStroke);

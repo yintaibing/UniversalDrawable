@@ -189,7 +189,9 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
             } else {
                 mFillPaint.setColor(mAttrs.colorFill);
             }
-            mFillPaint.setAlpha((int) (mAttrs.alphaFill * 255f));
+            if (mAttrs.alphaFill != 1f) {
+                mFillPaint.setAlpha((int) (mAttrs.alphaFill * 255f));
+            }
             mIsFillPaintDirty = false;
         }
 
@@ -210,7 +212,9 @@ public class UniversalDrawable extends Drawable implements IUniversalDrawable {
             } else {
                 mStrokePaint.setPathEffect(null);
             }
-            mStrokePaint.setAlpha((int) (mAttrs.alphaStroke * 255f));
+            if (mAttrs.alphaStroke != 1f) {
+                mStrokePaint.setAlpha((int) (mAttrs.alphaStroke * 255f));
+            }
             mIsStrokePaintDirty = false;
         }
 

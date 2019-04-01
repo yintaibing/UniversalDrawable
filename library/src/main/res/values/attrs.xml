@@ -65,8 +65,8 @@
 
         <attr name="bg_bitmap" format="reference"/><!-- 填充图资源id -->
 
-        <attr name="bg_alphaFill" format="fraction"/><!-- 填充画笔的透明度 -->
-        <attr name="bg_alphaStroke" format="fraction"/><!-- 描边画笔的透明度 -->
+        <attr name="bg_alphaFill" format="float"/><!-- 填充画笔的透明度 -->
+        <attr name="bg_alphaStroke" format="float"/><!-- 描边画笔的透明度 -->
 
         <attr name="bg_asImageDrawable" format="boolean"/><!-- 是否作为ImageDrawable设给ImageView -->
         <attr name="bg_asForeground" format="boolean"/><!-- 是否作为Foreground设给View -->
